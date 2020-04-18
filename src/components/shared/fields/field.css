@@ -22,12 +22,13 @@ ul {
     overflow: scroll;
 }
 
-.label {
+.field_label {
     font-size: 14px;
     color: #000000;
+    font-weight: bold;
 }
 
-.label:disabled {
+.field_label:disabled {
     color: #a8a8a8;
 }
 

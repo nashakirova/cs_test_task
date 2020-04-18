@@ -126,6 +126,7 @@ const Dashboard = () => {
             <div>
                 <Field type="text" value ={search} onChange={(value) => {setSearch(value)}} placeholder="Search something..."/>
             <table className="table">
+                            
                 <thead>                   
                     <tr>
                         {COLUMNS.map((column,i) => (<th key={column + i} className={column.width ? 'col-2' : 'col-1'}>

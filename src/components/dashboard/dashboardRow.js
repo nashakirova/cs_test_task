@@ -16,7 +16,7 @@ export const DashboardRow = (props) => {
         if (key === 'Requestor' || key === 'Storyteller') {
             
             let displayValue = COLUMNS.find(el => el.key === key)['displayValue'];
-            return props.refFields[displayValue] || '';
+            return props.refFields[value] && props.refFields[value][displayValue] || '';
         }
         
         return value || ''

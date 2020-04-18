@@ -1,0 +1,145 @@
+.table {
+    border-collapse: collapse;
+    text-align: left;
+}
+table.table {
+    
+    width: 100%;
+    max-width: 1170px;
+    margin-bottom: 30px; 
+}
+.table tr {
+    height: 40px;
+}
+.table thead {
+    font-weight: bold;
+    font-size: 12px;
+    
+}
+
+.table th {
+    border-bottom: 1px solid #000000;    
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.col-1 th {
+    max-width: 4%;
+}
+
+.col-2 th {
+    width: 8%;
+}
+
+.table tbody {
+    font-size: 12px;
+}
+
+.table tr {
+    border-bottom: 1px solid #7c7c7c;
+}
+
+.table tr:hover {
+    background-color: #e0dede;
+    color: #7c7c7c7c;
+}
+
+.table td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.action td {
+    font-weight: bold;
+}
+
+.header__cell {
+    display: flex;
+    flex-direction: row;
+    
+}
+.header__text {
+    text-align: center;
+    padding-left: 30%;
+    padding-top: 5%;
+}
+
+.arrow__active {
+    color: #000000;
+    cursor: pointer;
+}
+
+.arrow__inactive {
+    color: #7c7c7c;
+    cursor: pointer;
+}
+
+.arrow__wrapper {
+    margin-left: 0.5rem;
+}
+
+.th_name__wrapper {
+    
+    padding-top: 0.5rem;
+
+}
+
+.table a {
+    color: #000000;
+    font-weight: bold;
+}
+
+.pagination__wrapper {
+    float: left;
+}
+
+.inline_input_wrapper {
+    display: inline-block;
+}
+.popup {
+    z-index: 1000;
+    background-color: #e6e7e8;
+    width: 50%;
+    height: 40%;
+    position: absolute;
+    left: 30%;
+}
+
+.popup h4 {
+    font-size: 16px;
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+
+.popup .display_value {
+    background-color: #ffffff;
+    font-size: 14px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    overflow: scroll;
+    scrollbar-color: #7c7c7c7c #ffffff;
+    height: 60%;
+}
+
+.popup button {
+    float:right;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.popup_textarea {
+    border: none;
+    height: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.popup_close {
+    cursor: pointer;
+    position: absolute;
+    top: 3%;
+    left: 95%;
+}

@@ -122,9 +122,11 @@ const Dashboard = () => {
 
     return(
         <div>
-           <h2 className="title">Story requests</h2>
-            <div>
-                <Link to="/form"><button className="btn btn_primary">New Story</button></Link>
+           <div className="header_wrapper">
+               <h2 className="title">Story requests</h2> 
+               <Link to="/form"><button className="btn btn_primary flat_btn">New Story</button></Link>
+            </div>
+            <div>                
                 <Field type="text" value ={search} onChange={(value) => {setSearch(value)}} placeholder="Search something..."/>
             <table className="table">
                             
@@ -167,7 +169,7 @@ const Dashboard = () => {
         
             
             {
-               displayValue &&  <div className="popup" style={{"top": (topPopup + 1) * 30}}> 
+               displayValue &&  <div className="popup" style={{"top": (topPopup + 1) * 100}}> 
                
                <div><h4>{popupDescription}</h4> <span className="popup_close" onClick={() => setDisplayValue('')}>x</span></div>
                <div className="display_value">

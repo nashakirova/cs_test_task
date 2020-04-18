@@ -193,7 +193,7 @@ export const COLUMNS = [
         key: 'WantedCharacters',
         type: 'multichoice',
         options: characters,
-        required: 'required',
+        
         defaultValue: [],
         width: 2,
     }, 

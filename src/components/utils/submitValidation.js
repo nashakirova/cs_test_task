@@ -1,7 +1,7 @@
 import {transformDate} from "./time";
 export const validateValue = (column, value, mandatoryDependent) => {
     
-    if ((column.required || column.mandatoryDependent && mandatoryDependent) && (value.length === 0 || !value) && column.type !== 'checkbox' ){
+    if ((column.required || column.mandatoryDependent && mandatoryDependent) && (!value || value.length === 0 ) && column.type !== 'checkbox' ){
         return 'This field is mandatory';
     }
     if (column.min && value<column.min && column.type === 'numeric') {

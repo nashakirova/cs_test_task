@@ -23,7 +23,13 @@ const Form = (props) => {
             fetch(BASIC_URL + '/Requests/' + id)
             .then(resp => resp.json())
             .then(res => {
-                setFields(res);  
+                let presave_fields = JSON.parse(JSON.stringify(res))
+                COLUMNS.forEach(column => {
+                    if (column.required && !res[column.key]) {
+                        presave_fields[column.key] = column.defaultValue;
+                    }
+                });        
+                setFields(presave_fields);  
                 let promiseArray =[]
                 COLUMNS.forEach(column => {
                     if (column.type === 'select' && column.reference && res[column.key]) {
@@ -62,14 +68,15 @@ const Form = (props) => {
     
     const fieldsValid = () => {
         let errors = {};
-       
+        let errorFound = false;
         COLUMNS.forEach(column => {
-            errors[column.key] = validateValue(column, fields[column.key], fields[column.mandatoryDependent]);            
+            
+            errors[column.key] = validateValue(column, fields[column.key], fields[column.mandatoryDependent]);  
+            if (errors[column.key]) errorFound = true;          
         })
         
-        setFieldErrors(JSON.parse(JSON.stringify(errors)));
-        
-        if (Object.keys(errors).length) return false;
+        setFieldErrors(JSON.parse(JSON.stringify(errors)));        
+        if (errorFound) return false;
         return true;
         
         
@@ -83,9 +90,10 @@ const Form = (props) => {
             method='PUT';
             url += '/' + id;
         }
-        
+                
         if (mode === 'submit') {
             if (!fieldsValid()) {
+                
                 window.scrollTo(0, 0)
                 return;
             }
@@ -137,12 +145,12 @@ const Form = (props) => {
             
             <form className="form" onSubmit={(event) => save(event,'submit')}>
                 <h2 className="title">Submit a new story request {isOwner}</h2>
-                <Field
+                {id && <Field
                 type='checkbox' 
                 label="Are you an owner? We will check with our own methods"
                 onChange={(v)=> changeIsOwner(v)}
                 value={isOwner}
-                name="isOwner"/>
+                name="isOwner"/>}
             {COLUMNS.map(column => column.type!== 'action' &&
                 <Field key={column.key}
                 type={column.type}

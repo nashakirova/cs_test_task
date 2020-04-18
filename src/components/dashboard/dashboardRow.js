@@ -10,7 +10,7 @@ export const DashboardRow = (props) => {
         }
 
         if (key === 'WantedCharacters') {
-            return value.join(', ');
+            return value && value.join(', ') || '';
         }
 
         if (key === 'Requestor' || key === 'Storyteller') {

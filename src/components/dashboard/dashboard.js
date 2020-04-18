@@ -124,6 +124,7 @@ const Dashboard = () => {
         <div>
            <h2 className="title">Story requests</h2>
             <div>
+                <Link to="/form"><button className="btn btn_primary">New Story</button></Link>
                 <Field type="text" value ={search} onChange={(value) => {setSearch(value)}} placeholder="Search something..."/>
             <table className="table">
                             

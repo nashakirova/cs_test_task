@@ -161,8 +161,8 @@ const Form = (props) => {
                 hasError={fieldsErrors[column.key] || ''}
                />
             )}
-            {isOwner && <div className="buttons_wrapper">
-                <Link className="btn btn_secondary" to="/">Cancel</Link>
+            {(isOwner || !id) && <div className="buttons_wrapper">
+                <Link to="/"><button className="btn btn_secondary" >Cancel</button></Link>
                 <button className="btn btn_primary" onClick={(event) => save(event,'save')}>Save</button>    
                 <button className="btn btn_primary" type="submit">Submit</button>
             </div>}

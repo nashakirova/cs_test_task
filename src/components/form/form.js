@@ -55,7 +55,11 @@ const Form = (props) => {
         }
     },[id]);
 
-    
+    const validateOwner = (value) => {
+        fetch(BASIC_URL + '/CurrentUser/' + (value ? '0' : '1'))
+        .then(resp => resp.json())
+        .then(res => changeIsOwner(res.owner));
+    }
 
     const updateField = (column, value) => {
         let fields_snapshot = JSON.parse(JSON.stringify(fields));
@@ -149,7 +153,7 @@ const Form = (props) => {
                 {id && <Field
                 type='checkbox' 
                 label="Are you an owner? We will check with our own methods"
-                onChange={(v)=> changeIsOwner(v)}
+                onChange={(v)=> validateOwner(v)}
                 value={isOwner}
                 name="isOwner"/>}
             {COLUMNS.map(column => column.type!== 'action' &&

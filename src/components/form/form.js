@@ -2,15 +2,8 @@ import React, {useState, useEffect} from "react";
 import {BASIC_URL, COLUMNS} from "../utils/constants";
 import {validateValue} from "../utils/submitValidation";
 import {Field} from "../shared/fields/field";
-import {Checkbox} from "../shared/fields/checkbox";
-import {Datepicker} from "../shared/fields/datepicker";
-import {Input} from "../shared/fields/input";
-import {Picker} from "../shared/fields/lookup";
-import {Multucheckbox} from "../shared/fields/multicheckbox";
-import {Rediobutton} from "../shared/fields/radiobuttons";
-import {Textarea} from "../shared/fields/textarea";
 import {Link} from "react-router-dom";
-import { transformDate } from "../utils/time";
+
 const Form = (props) => {    
     const [fields, setFields] = useState({});
     const id = window.location.search.indexOf('id') && window.location.search.split('=')[1];
@@ -28,7 +21,7 @@ const Form = (props) => {
                     if (column.required && !res[column.key]) {
                         presave_fields[column.key] = column.defaultValue;
                     }
-                });        
+                });      
                 setFields(presave_fields);  
                 let promiseArray =[]
                 COLUMNS.forEach(column => {
@@ -51,8 +44,16 @@ const Form = (props) => {
                 setRefFields(references);
             })
             .catch( err => console.error(err));            
+        } else {
+            let presave_fields ={}
+            COLUMNS.forEach(column => {
+                if (column.required) {
+                    presave_fields[column.key] = column.defaultValue;
+                }
+            });      
+            setFields(presave_fields);
         }
-    },[]);
+    },[id]);
 
     
 
@@ -157,9 +158,9 @@ const Form = (props) => {
                 value={fields[column.key] || column.defaultValue}
                 name={column.key}
                 label={column.label}
-                disabled={!isOwner && id ? 'disabled' : ''}
-                hidden={column.hidden || column.visibleDependent && !fields[column.visibleDependent]? 'hidden' : ''}
-                required={column.required ||  column.mandatoryDependent && fields[column.mandatoryDependent] && (!column.hidden || column.visibleDependent && fields[column.visibleDependent]) ? 'required' : ''}
+                disabled={!isOwner && id ? true : false}
+                hidden={column.hidden || (column.visibleDependent && !fields[column.visibleDependent] ) ? 'hidden' : ''}
+                required={column.required ||  (column.mandatoryDependent && fields[column.mandatoryDependent] && (!column.hidden || (column.visibleDependent && fields[column.visibleDependent]))) ? 'required' : ''}
                 onChange={(value) => updateField(column.key, value)}
                 options={column.options}
                 reference={column.reference}

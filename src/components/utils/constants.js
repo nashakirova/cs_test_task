@@ -168,7 +168,8 @@ export const COLUMNS = [
         min: 250000,
         description: 'In FBL Dollars',
         defaultValue: '',
-        sort: true
+        sort: true,
+        required: 'required'
     },
     {
         label: 'Status',

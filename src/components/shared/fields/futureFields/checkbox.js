@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-import  "./field.css";
+import React from "react";
+import  "../field.css";
 
 export const Checkbox = (props) => {
     const {
@@ -12,7 +12,7 @@ export const Checkbox = (props) => {
         hasError,
         className,
     } = props;
-    const [error, setError] = useState('');
+    
     return(
         <div className={className ? "field_wrapper " + className : "field_wrapper"} hidden={hidden}>
             <label className="checkbox_container"> 
@@ -24,7 +24,7 @@ export const Checkbox = (props) => {
                     onChange={() => onChange(!value)} 
                     disabled={disabled} 
                     /><span disabled={disabled}  className="check_label">{label}</span>
-                    <span disabled={disabled}  className={error || hasError ? "field_input_checkbox error" : "field_input_checkbox"}></span>
+                    <span disabled={disabled}  className={hasError ? "field_input_checkbox error" : "field_input_checkbox"}></span>
                     
                 </label>
         </div>

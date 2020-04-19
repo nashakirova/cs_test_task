@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Input} from "../shared/fields/input";
+import {Input} from "../shared/fields/futureFields/input";
 
 
 export const Pagination = (props) => {

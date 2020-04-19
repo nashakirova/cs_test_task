@@ -1,13 +1,8 @@
 import React, {useState} from "react";
 import {BASIC_URL} from "../../utils/constants";
-import {transformDate} from "../../utils/time";
 import DatePicker from "react-date-picker";
-import {Checkbox} from "./checkbox";
-import {Input} from "./input";
-import {Picker} from "./lookup";
-import {Multucheckbox} from "./multicheckbox";
-import {Radiobutton} from "./radiobuttons";
-import {Textarea} from "./textarea";
+import {Checkbox} from "./futureFields/checkbox";
+
 import  "./field.css";
 
 export const Field = (props) => {    
@@ -62,11 +57,6 @@ export const Field = (props) => {
         setOptions([]);
         setSelectQuery('');
          
-    }
-
-    const clearAll = () => {
-        setOptions([]);
-        setSelectQuery('');
     }
 
     const multichoiceHandler = (item, mode) => {
@@ -221,8 +211,10 @@ export const Field = (props) => {
                 autoComplete="off"/>
             }
             { 
-                 type === 'date' && (disabled ? (<p>{transformDate(value)}</p>)  :
-                     <DatePicker value={value? new Date(value): ''} onChange={(date) => onChange(date)}/>) 
+                 type === 'date' && 
+                     <DatePicker  disabled={disabled} value={value? new Date(value): ''} onChange={(date) => onChange(date)} style={{
+                         "color": "#000000",
+                     }}/> 
             }
             {
                 (error || hasError) && <p className="error_message">{error || hasError}</p>

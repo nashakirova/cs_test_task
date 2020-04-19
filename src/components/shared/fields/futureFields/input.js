@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import  "./field.css";
+import  "../field.css";
 
 export const Input = (props) => {
     const {

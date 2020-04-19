@@ -5,6 +5,8 @@ How to proceed:
 First, set up json-server on the localhost port 3000
 To do that, either run json-server db.json (file is shared separately via the email)
 Or, if json-server is not yet installed, npm install --save json-server
+
+
 Important! In case your jspon-server is running on a different port, please change the BASIC_URL property of src/utils/constants.js
 
 

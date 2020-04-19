@@ -8,7 +8,7 @@ export const validateValue = (column, value, mandatoryDependent) => {
         return 'Your value should be ' + column.min + ' or above';
     }
 
-    if (column.min && value<column.min && column.type === 'date') {
+    if (column.min && new Date(value)<column.min && column.type === 'date') {
         return 'The date should be at least ' + transformDate(column.min);
     }
 
@@ -20,7 +20,7 @@ export const validateValue = (column, value, mandatoryDependent) => {
         return 'Your value should be ' + column.max + ' or below';
     }
 
-    if (column.max && value>column.max && column.type === 'date') {
+    if (column.max && new Date(value)>column.max && column.type === 'date') {
         return 'The date should be before ' + transformDate(column.max);
     }
 
